@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <div>Register</div>,
+        element: <Register />,
       },
       {
         path: "/all-tourist-spot",
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/my-list",
         element: <div>My List</div>,
-      }
+      },
     ],
   },
 ]);
