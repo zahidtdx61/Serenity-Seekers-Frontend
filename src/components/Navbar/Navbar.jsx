@@ -29,7 +29,7 @@ const Navbar = () => {
       <div>
         <h1 className="text-2xl tracking-wide font-bold select-none hover:scale-105 transition-transform ease-in duration-800">
           <NavLink to={"/"}>
-            Crestline <span className="text-blue-600">Properties</span>
+            Serenity <span className="text-blue-600">Seekers</span>
           </NavLink>
         </h1>
       </div>
