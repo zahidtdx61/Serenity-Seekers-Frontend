@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
@@ -34,6 +35,14 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, githubProvider);
   };
 
+  const updateUser = (name, imageUrl) => {
+    setIsLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: imageUrl,
+    });
+  };
+
   const logOut = () => {
     setUser(null);
     return signOut(auth);
@@ -48,6 +57,7 @@ const AuthProvider = ({ children }) => {
     signUpEmail,
     signInGoogle,
     signInGithub,
+    updateUser,
     logOut,
   };
 

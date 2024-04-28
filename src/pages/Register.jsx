@@ -100,7 +100,7 @@ const Register = () => {
       console.log("after update", user);
 
       navigate(prevPage);
-      toast.success("Welcome to Crestline Properties");
+      toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       // console.error('get error: ', error.code, error.message);
       if (error.code === "auth/email-already-in-use")
