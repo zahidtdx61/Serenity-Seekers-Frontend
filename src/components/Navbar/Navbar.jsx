@@ -8,9 +8,9 @@ const Navbar = () => {
 
   const routes = [
     { name: "Home", path: "/", type: "public" },
-    { name: "User Profile", path: "/user-profile", type: "private" },
-    { name: "Update Profile", path: "/update-profile", type: "private" },
-    { name: "Wishlist", path: "/wishlist", type: "private" },
+    { name: "All Tourists Spot", path: "/all-tourist-spot", type: "public" },
+    { name: "Add Tourists Spot", path: "/add-tourist-spot", type: "private" },
+    { name: "My List", path: "/my-list", type: "private" },
   ];
 
   const navStyle = (isActive) => {
@@ -27,9 +27,9 @@ const Navbar = () => {
   return (
     <div className="w-full z-50 p-2 lg:py-4 lg:px-8  flex items-center justify-between shadow-lg fixed bg-white">
       <div>
-        <h1 className="text-2xl tracking-wide font-bold select-none hover:scale-105 transition-transform ease-in duration-800">
+        <h1 className="text-2xl tracking-widerider font-bold select-none text-[#153448]">
           <NavLink to={"/"}>
-            Serenity <span className="text-blue-600">Seekers</span>
+            Serenity <span className="text-[#3C5B6F]">Seekers</span>
           </NavLink>
         </h1>
       </div>
@@ -56,10 +56,10 @@ const Navbar = () => {
       ) : (
         <div className={`lg:flex gap-2 hidden lg:static`}>
           <div className="px-5 py-2 bg-blue-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105">
-            <NavLink to={"/sign-in"}>Sign In</NavLink>
+            <NavLink to={"/log-in"}>Log In</NavLink>
           </div>
           <div className="px-5 py-2 bg-green-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105">
-            <NavLink to={"/sign-up"}>Sign Up</NavLink>
+            <NavLink to={"/sign-up"}>Register</NavLink>
           </div>
         </div>
       )}

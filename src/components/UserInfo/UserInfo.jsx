@@ -26,7 +26,7 @@ const UserInfo = () => {
           onClick={handleSignOut}
           className="px-5 py-2 bg-red-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105 hidden lg:block"
         >
-          <NavLink to={"/"}>Sign Out</NavLink>
+          <NavLink to={"/"}>Log Out</NavLink>
         </button>
       </div>
     </>

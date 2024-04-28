@@ -2,6 +2,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
@@ -19,6 +20,11 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const logOut = () => {
+    setUser(null);
+    return signOut(auth);
+  };
+
   const authData = {
     dummy: "anyTxt",
     user,
@@ -26,6 +32,7 @@ const AuthProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     signInGoogle,
+    logOut,
   };
 
   useEffect(() => {
