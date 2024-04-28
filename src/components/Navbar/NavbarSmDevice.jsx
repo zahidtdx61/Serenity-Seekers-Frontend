@@ -42,21 +42,29 @@ const NavbarSmDevice = ({ routes, navStyle }) => {
           open ? "top-16 lg:top-20 right-4" : "-top-96 right-4"
         } lg:hidden rounded-md h-fit flex flex-col justify-start items-start`}
       >
-        {routes.map((route, index) => (
-          <ul key={index} className="pl">
-            <NavLink
-              to={route.path}
-              className={({ isActive }) => navStyle(isActive)}
-            >
-              {route.name}
-            </NavLink>
-          </ul>
-        ))}
+        {routes.map((route, index) => {
+          if (
+            route.type === "public" ||
+            route.type === "private" ||
+            (user && route.type === "private-conditional")
+          ) {
+            return (
+              <ul key={index} className="">
+                <NavLink
+                  to={route.path}
+                  className={({ isActive }) => navStyle(isActive)}
+                >
+                  {route.name}
+                </NavLink>
+              </ul>
+            );
+          }
+        })}
 
         {user && (
           <ul>
             <button  onClick={handleSignOut}>
-              Sign Out
+              Log Out
             </button>
           </ul>
         )}
@@ -64,10 +72,10 @@ const NavbarSmDevice = ({ routes, navStyle }) => {
         {!user && (
           <>
             <ul className="px-2 py-1 w-full mt-4 text-center  bg-blue-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105">
-              <NavLink to={"/sign-in"}>Sign In</NavLink>
+              <NavLink to={"/log-in"}>Log In</NavLink>
             </ul>
             <ul className="px-2 py-1 w-full text-center bg-green-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105">
-              <NavLink to={"/sign-up"}>Sign Up</NavLink>
+              <NavLink to={"/register"}>Register</NavLink>
             </ul>
           </>
         )}

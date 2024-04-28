@@ -10,7 +10,7 @@ const Navbar = () => {
     { name: "Home", path: "/", type: "public" },
     { name: "All Tourists Spot", path: "/all-tourist-spot", type: "public" },
     { name: "Add Tourists Spot", path: "/add-tourist-spot", type: "private" },
-    { name: "My List", path: "/my-list", type: "private" },
+    { name: "My List", path: "/my-list", type: "private-conditional" },
   ];
 
   const navStyle = (isActive) => {
@@ -37,16 +37,24 @@ const Navbar = () => {
       <div
         className={`gap-4 flex-1 font-bold lg:flex hidden lg:static justify-center`}
       >
-        {routes.map((route, index) => (
-          <ul key={index}>
-            <NavLink
-              to={route.path}
-              className={({ isActive }) => navStyle(isActive)}
-            >
-              {route.name}
-            </NavLink>
-          </ul>
-        ))}
+        {routes.map((route, index) => {
+          if (
+            route.type === "public" ||
+            route.type === "private" ||
+            (user && route.type === "private-conditional")
+          ) {
+            return (
+              <ul key={index}>
+                <NavLink
+                  to={route.path}
+                  className={({ isActive }) => navStyle(isActive)}
+                >
+                  {route.name}
+                </NavLink>
+              </ul>
+            );
+          }
+        })}
       </div>
 
       {user ? (
@@ -59,7 +67,7 @@ const Navbar = () => {
             <NavLink to={"/log-in"}>Log In</NavLink>
           </div>
           <div className="px-5 py-2 bg-green-500 text-slate-50 rounded hover:bg-opacity-70 hover:scale-105">
-            <NavLink to={"/sign-up"}>Register</NavLink>
+            <NavLink to={"/register"}>Register</NavLink>
           </div>
         </div>
       )}
