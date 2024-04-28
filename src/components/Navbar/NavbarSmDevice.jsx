@@ -38,7 +38,7 @@ const NavbarSmDevice = ({ routes, navStyle, theme }) => {
       </div>
 
       <div
-        className={`z-[10] lg:flex gap-1 w-fit min-w-40 font-bold absolute duration-1000 ${(theme === '1' ? 'bg-zinc-800' : "bg-white")} px-8 py-4 shadow ${
+        className={`z-[10] lg:flex gap-1 w-fit min-w-40 font-bold absolute duration-1000 ${(theme === '1' ? 'bg-[#282a36]' : "bg-white")} px-8 py-4 shadow ${
           open ? "top-16 lg:top-20 right-4" : "-top-96 right-4"
         } lg:hidden rounded-md h-fit flex flex-col justify-start items-start`}
       >

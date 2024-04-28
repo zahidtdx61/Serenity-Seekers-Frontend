@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full z-50 p-2 lg:py-4 lg:px-8  flex items-center justify-between shadow-lg fixed">
+    <div className={`w-full ${(theme==='0') ? 'bg-white' : 'bg-[#282a36]'}  z-50 p-2 lg:py-4 lg:px-8  flex items-center justify-between shadow-lg fixed`}>
       <div className="flex-1 lg:flex-none">
         <h1 className="text-xl md:text-[2rem] font-bold  select-none text-blue-400">
           <NavLink to={"/"}>
