@@ -31,7 +31,7 @@ const NavbarSmDevice = ({ routes, navStyle }) => {
         {user && <UserInfo />}
         <div
           onClick={() => setOpen((val) => !val)}
-          className="text-3xl lg:hidden p-1"
+          className="text-4xl lg:hidden p-1"
         >
           {open ? <AiOutlineClose /> : <LuMenu />}
         </div>
@@ -63,7 +63,7 @@ const NavbarSmDevice = ({ routes, navStyle }) => {
 
         {user && (
           <ul>
-            <button  onClick={handleSignOut}>
+            <button  onClick={handleSignOut} className="px-2">
               Log Out
             </button>
           </ul>

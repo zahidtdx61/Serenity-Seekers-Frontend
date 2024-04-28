@@ -5,7 +5,7 @@ const Loader = () => {
     <div
       className={`min-h-[calc(100vh-80px)] flex flex-col  justify-center  items-center `}
     >
-      <RingLoader size={150} color="#36d7b7" />
+      <RingLoader size={150} color="#0E46A3" />
     </div>
   );
 };
