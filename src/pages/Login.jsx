@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import toast from "react-hot-toast";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const [isPasswordHidden, setPasswordHidden] = useState(true);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
   const prevPage = location?.state || "/";
 
-  const {setUser, setIsLoading, signInGoogle} = useAuth();
+  const { setUser, setIsLoading, signInGoogle, signInGithub } = useAuth();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -21,13 +21,27 @@ const Login = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
-      toast.success("Welcome to Crestline Properties");
+      toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);
       setUser(null);
       toast.error("Google sign in failed !!!");
     }
-  }
+  };
+
+  const handleGithubSignIn = async () => {
+    try {
+      const result = await signInGithub();
+      const user = result.user;
+      setUser(user);
+      navigate(prevPage);
+      toast.success("Welcome to Serenity Seekers !!!");
+    } catch (error) {
+      setIsLoading(false);
+      setUser(null);
+      toast.error("Github sign in failed !!!");
+    }
+  };
 
   return (
     <>
@@ -144,7 +158,11 @@ const Login = () => {
           </form>
 
           {/* social login */}
-          <button onClick={handleGoogleSignIn} className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100">
+          {/* google login */}
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
+          >
             <svg
               className="w-5 h-5"
               viewBox="0 0 48 48"
@@ -178,7 +196,11 @@ const Login = () => {
             Continue with Google
           </button>
 
-          <button className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100">
+          {/* github login */}
+          <button
+            onClick={handleGithubSignIn}
+            className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
+          >
             <svg
               className="w-5 h-5"
               viewBox="0 0 48 48"

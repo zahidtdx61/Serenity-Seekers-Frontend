@@ -1,4 +1,5 @@
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -20,6 +21,12 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const githubProvider = new GithubAuthProvider();
+  const signInGithub = () => {
+    setIsLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
+
   const logOut = () => {
     setUser(null);
     return signOut(auth);
@@ -32,6 +39,7 @@ const AuthProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     signInGoogle,
+    signInGithub,
     logOut,
   };
 
