@@ -23,7 +23,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <CiGlobe size={20} />
               <Link to="/">
-                Crestline <span className="text-blue-400">Properties</span>
+                Serenity <span className="text-blue-400">Seekers</span>
               </Link>
             </div>
           </div>
