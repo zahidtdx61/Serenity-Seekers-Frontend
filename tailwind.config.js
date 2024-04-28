@@ -8,6 +8,12 @@ export default {
         "fira-sans": ["Fira Sans", " sans-serif"],
         mulish: ["Mulish", "sans-serif"],
       },
+      colors: {
+        "primary-blue": "#2C4E80",
+        "primary-sky": "#0E46A3",
+        "primary-navy": "#1E0342",
+        "primary-maroon": "#DD5746",
+      },
     },
   },
   plugins: [],
