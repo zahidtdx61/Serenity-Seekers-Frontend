@@ -155,12 +155,12 @@ const Register = () => {
             <div className="">
               <div className="mt-5 space-y-1">
                 <h3 className="text-blue-800 text-2xl font-bold sm:text-3xl">
-                  Sign up
+                  Register
                 </h3>
                 <p className="">
                   Already have an account?{" "}
                   <Link
-                    to={"/sign-in"}
+                    to={"/log-in"}
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Log in
