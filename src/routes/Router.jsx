@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
+import AllTouristSpot from "../pages/AllTouristSpot";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-tourist-spot",
-        element: <div>All Tourists Spot</div>,
+        element: <AllTouristSpot />,
       },
       {
         path: "/add-tourist-spot",
