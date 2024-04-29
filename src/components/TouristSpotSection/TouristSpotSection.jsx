@@ -15,7 +15,7 @@ const TouristSpotSection = () => {
     setDataLoading(true);
     const response = await session.get("/get-spot");
     setDataLoading(false);
-    setSpotsData(response.data.data);
+    setSpotsData(response.data.data.slice(0, Math.min(response.data.data.length , 6)));
   }, []);
 
   if (dataLoading)

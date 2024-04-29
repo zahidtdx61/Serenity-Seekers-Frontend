@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
+import AddTouristSpot from "../pages/AddTouristSpot";
 import AllTouristSpot from "../pages/AllTouristSpot";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         path: "/add-tourist-spot",
         element: (
           <PrivateRoutes>
-            <div>Add Tourists Spot</div>
+            <AddTouristSpot />
           </PrivateRoutes>
         ),
       },
