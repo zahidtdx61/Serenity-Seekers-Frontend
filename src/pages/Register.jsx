@@ -149,7 +149,7 @@ const Register = () => {
         <title>Serenity Seekers | Register</title>
       </Helmet>
 
-      <div className="w-full flex mb-4 relative">
+      <div className="w-full flex mb-4 relative min-h-[calc(100vh-116px)]">
         <div className="flex-1 flex items-center justify-center h-full">
           <div className="w-full max-w-md px-4  text-gray-600 sm:px-0">
             <div className="">

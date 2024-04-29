@@ -6,7 +6,7 @@ const Home = () => {
       <Helmet>
         <title>Serenity Seekers | Home</title>
       </Helmet>
-      <div>Home</div>
+      <div className="min-h-[calc(100vh-116px)]">Home</div>
     </>
   );
 };
