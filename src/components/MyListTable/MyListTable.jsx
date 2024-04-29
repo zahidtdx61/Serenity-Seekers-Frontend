@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useSession from "../../hooks/useSession";
 import useCustomTheme from "../../hooks/useTheme";
@@ -24,6 +25,8 @@ const BtnCell = ({
   // router.delete("/delete-spot/:spotId", SpotController.deleteSpot);
   const { session } = useSession();
   const { user } = useAuth();
+  const navigate = useNavigate();
+
   const deleteFromDatabase = async (spotId) => {
     try {
       const response = await session.delete(`/delete-spot/${spotId}`, {
@@ -47,7 +50,7 @@ const BtnCell = ({
   };
 
   const updateSpot = (spotId) => {
-    console.log("Updating spot with id: ", spotId);
+    navigate(`/update-spot/${spotId}`);
   };
   return (
     <button

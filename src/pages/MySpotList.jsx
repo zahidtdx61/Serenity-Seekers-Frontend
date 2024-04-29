@@ -18,7 +18,7 @@ const MySpotList = () => {
       const response = await session.get(`/get-spot/user/${uid}`);
       setDataLoading(false);
       setTableData(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
     } catch (error) {
       console.log("Error: ", error);
     } finally {
