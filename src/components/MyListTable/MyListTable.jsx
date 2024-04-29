@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
+import useCustomTheme from "../../hooks/useTheme";
 
 const ImageCell = ({ row }) => (
   <img
@@ -20,6 +21,7 @@ const BtnCell = ({ message, bgColor }) => (
 );
 
 const MyListTable = ({ tableData }) => {
+  const { theme } = useCustomTheme();
   const data = tableData.map((item) => {
     const { image, touristSpotName, location, countryName, averageCost } = item;
     return {
@@ -63,8 +65,23 @@ const MyListTable = ({ tableData }) => {
       cell: (row) => <BtnCell message={row.delete} bgColor="red" />,
     },
   ];
+  const tableStyle = {
+    headCells: {
+      style: {
+        backgroundColor: theme === "1" ? "#282a36" : "inherit",
+        color: theme === "1" ? "#f8f8f2" : "inherit",
+      },
+    },
+    cells: {
+      style: {
+        backgroundColor: theme === "1" ? "#282a36" : "inherit",
+        color: theme === "1" ? "#f8f8f2" : "inherit",
+      },
+    },
+  };
 
-  return <DataTable columns={columns} data={data} />;
+  return <DataTable columns={columns} data={data} customStyles={tableStyle} />;
+  // return <DataTable columns={columns} data={data} />;
 };
 
 MyListTable.propTypes = {
