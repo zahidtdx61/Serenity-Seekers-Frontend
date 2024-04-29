@@ -80,7 +80,9 @@ const MyListTable = ({ tableData }) => {
     },
   };
 
-  return <DataTable columns={columns} data={data} customStyles={tableStyle} />;
+  return (
+    <DataTable columns={columns} data={data} customStyles={tableStyle} />
+  );
   // return <DataTable columns={columns} data={data} />;
 };
 

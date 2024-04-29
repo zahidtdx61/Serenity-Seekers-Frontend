@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import MySpotList from "../pages/MySpotList";
 import Register from "../pages/Register";
 import PrivateRoutes from "./PrivateRoutes";
+import ViewDetails from "../pages/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MySpotList />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/view-details/:spotId",
+        element: (
+          <PrivateRoutes>
+            <ViewDetails/>
           </PrivateRoutes>
         ),
       },

@@ -55,10 +55,12 @@ const TouristSpotCard = ({ spot }) => {
         <div>
           <p className="text-sm font-semibold">Average Cost: {averageCost}$</p>
         </div>
-
-        <button className="bg-blue-700 hover:bg-blue-500 text-zinc-50 font-bold py-2 px-4 rounded mt-4">
-          <Link to={`/view-details/${_id}`}>View Property</Link>
-        </button>
+        
+        <Link to={`/view-details/${_id}`}>
+          <button className="bg-blue-700 hover:bg-blue-500 text-zinc-50 font-bold py-2 px-4 rounded mt-4">
+            View Property
+          </button>
+        </Link>
       </div>
     </div>
   );
