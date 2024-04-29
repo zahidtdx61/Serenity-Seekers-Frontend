@@ -42,7 +42,7 @@ const ViewDetails = () => {
     );
 
   return (
-    <div className="w-full mt-8 max-w-screen-xl mx-auto p-4 rounded-md border border-b-2 flex flex-col md:flex-row relative gap-4">
+    <div className="w-[95%] mt-8 lg:max-w-screen-xl mx-auto p-4 rounded-md border border-b-2 flex flex-col md:flex-row relative gap-4">
       <div className="w-full md:w-[60%] rounded-md overflow-hidden">
         <img src={image} className="w-full h-full object-cover object-center" />
       </div>
@@ -52,7 +52,7 @@ const ViewDetails = () => {
         <div className="font-mulish font-medium text-sm mt-2 text-base-400 flex gap-1">
           <IoLocationOutline size={20} /> <p>{location}</p>
         </div>
-        <div className="font-mulish font-medium  my-4 text-base-400">
+        <div className="font-mulish font-medium  my-6 text-base-400">
           {shortDescription}
         </div>
 

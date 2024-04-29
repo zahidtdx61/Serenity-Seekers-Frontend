@@ -20,7 +20,7 @@ const SpotCard = ({ spot }) => {
       <div className="font-mulish font-semibold text-xl mt-2">
         {touristSpotName}
       </div>
-      <div className="font-mulish font-medium text-sm my-4 text-slate-600 flex-1">
+      <div className="font-mulish font-medium text-sm my-4 flex-1">
         {shortDescription}
       </div>
 
