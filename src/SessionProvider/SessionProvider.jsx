@@ -5,7 +5,7 @@ export const SessionContext = createContext(null);
 
 const SessionProvider = ({ children }) => {
   const session = axios.create({
-    baseURL: "https://learn-basic-crud-api-nodejs.vercel.app/",
+    baseURL: "https://serenity-seekers-backend.vercel.app/api/v1/",
     timeout: 5000,
   });
 
