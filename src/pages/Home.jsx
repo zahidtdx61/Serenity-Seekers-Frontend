@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+import Banner from "../components/Banner/Banner";
+import CountrySection from "../components/CountrySection/CountrySection";
 
 const Home = () => {
   return (
@@ -6,7 +8,10 @@ const Home = () => {
       <Helmet>
         <title>Serenity Seekers | Home</title>
       </Helmet>
-      <div className="min-h-[calc(100vh-116px)]">Home</div>
+      <div className="min-h-[calc(100vh-116px)]">
+        {/* <Banner/> */}
+        <CountrySection/>
+      </div>
     </>
   );
 };

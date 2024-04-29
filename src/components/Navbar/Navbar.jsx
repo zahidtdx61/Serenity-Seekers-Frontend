@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
 import { CiLight } from "react-icons/ci";
 import { IoMoonOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import UserInfo from "../UserInfo/UserInfo";
 import NavbarSmDevice from "./NavbarSmDevice";
+import useCustomTheme from "../../hooks/useTheme";
 
 const Navbar = () => {
   const { user } = useAuth();
-  const [theme, setTheme] = useState('0');
+  const { theme, setTheme } = useCustomTheme();
 
   const routes = [
     { name: "Home", path: "/", type: "public" },
@@ -21,29 +21,16 @@ const Navbar = () => {
     console.log("Hola event");
     console.log("theme", theme);
     const currTheme = localStorage.getItem("theme");
-    if(currTheme === '0'){
+    if (currTheme === "0") {
       document.querySelector("html").setAttribute("data-theme", "dracula");
-      localStorage.setItem("theme", '1');
-      setTheme('1');
-    }else{
+      localStorage.setItem("theme", "1");
+      setTheme("1");
+    } else {
       document.querySelector("html").setAttribute("data-theme", "light");
-      localStorage.setItem("theme", '0');
-      setTheme('0');
+      localStorage.setItem("theme", "0");
+      setTheme("0");
     }
   };
-
-  useEffect(() => {
-    const localTheme = localStorage.getItem("theme");
-    if(localTheme !== null){
-      setTheme(localTheme);
-    }else{
-      setTheme('0');
-      localStorage.setItem("theme", '0');
-    }
-    const currTheme = localStorage.getItem("theme");
-    if(currTheme === '0') document.querySelector("html").setAttribute("data-theme", "light");
-    else document.querySelector("html").setAttribute("data-theme", "dracula");
-  }, []);
 
   const navStyle = (isActive) => {
     return [
@@ -56,7 +43,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`w-full ${(theme==='0') ? 'bg-white' : 'bg-[#282a36]'}  z-50 p-2 lg:py-4 lg:px-8  flex items-center justify-between shadow-lg fixed`}>
+    <div
+      className={`w-full ${
+        theme === "0" ? "bg-white" : "bg-[#282a36]"
+      }  z-50 p-2 lg:py-4 lg:px-8  flex items-center justify-between shadow-lg fixed`}
+    >
       <div className="flex-1 lg:flex-none">
         <h1 className="text-xl md:text-[2rem] font-bold  select-none text-blue-400">
           <NavLink to={"/"}>
@@ -89,7 +80,7 @@ const Navbar = () => {
       </div>
 
       <div onClick={handleTheme} className="mr-2 lg:mr-4 flex items-center">
-        {theme==='0' ? (
+        {theme === "0" ? (
           <button>
             <CiLight size={30} />
           </button>
