@@ -1,20 +1,27 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { ScaleLoader } from "react-spinners";
 import useAuth from "../hooks/useAuth";
 import useSession from "../hooks/useSession";
-import { useState } from "react";
-import { ScaleLoader } from "react-spinners";
 
 const AddTouristSpot = () => {
   const { register, handleSubmit, reset } = useForm();
   const { session } = useSession();
   const { user } = useAuth();
   const [reqLoading, setReqLoading] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const sendTouristSpotData = async (data) => {
-    setReqLoading(true);
+    setEmailError(false);
+    console.log('data:', data.email, 'user:', user.email);
+    if (data.email !== user.email) {
+      setEmailError("Please enter your registered email address");
+      return;
+    }
     const { uid, email, displayName } = user;
     try {
+      setReqLoading(true);
       const response = await session.post(
         `/add-spot/${uid}`,
         {
@@ -36,19 +43,19 @@ const AddTouristSpot = () => {
       console.log("Error: ", error);
       setReqLoading(false);
       toast.error("Failed to add tourist spot");
-    } finally{
+    } finally {
       setReqLoading(false);
     }
   };
 
   if (reqLoading)
-  return (
-    <div
-      className={`w-[95%] min-h-[calc(100vh-400px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
-    >
-      <ScaleLoader size={40} color="#0E46A3" />
-    </div>
-  );
+    return (
+      <div
+        className={`w-[95%] min-h-[calc(100vh-400px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
+      >
+        <ScaleLoader size={40} color="#0E46A3" />
+      </div>
+    );
 
   return (
     <div className="min-h-[calc(100vh-80px)] max-w-screen-lg p-4 mx-auto">
@@ -164,12 +171,15 @@ const AddTouristSpot = () => {
             placeholder="Enter your email"
             className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 shadow-sm rounded-lg"
           />
+          {emailError && (
+            <p className="text-xs text-red-700 my-0">{emailError}</p>
+          )}
         </div>
 
         <div>
           <label className="font-medium">Your Name</label>
           <input
-            {...register("email")}
+            {...register("username")}
             required
             placeholder="Enter your email"
             className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 shadow-sm rounded-lg"

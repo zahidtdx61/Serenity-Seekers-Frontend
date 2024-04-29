@@ -17,7 +17,7 @@ const TouristSpotCard = ({ spot }) => {
   } = spot;
   return (
     <div className="w-full p-4 rounded-md border border-b-2 flex flex-col md:flex-row relative gap-4">
-      <div className="w-full md:w-[40%] rounded-md h-[250px] overflow-hidden relative">
+      <div className="w-full md:w-[45%] rounded-md h-[320px] overflow-hidden relative">
         <img
           src={image}
           className="w-full h-full object-cover object-center hover:scale-105 duration-1000"
@@ -27,7 +27,7 @@ const TouristSpotCard = ({ spot }) => {
         </div>
       </div>
 
-      <div className="w-full md:w-[57%] flex flex-col flex-1">
+      <div className="w-full md:w-[52%] flex flex-col flex-1">
         <div className="font-mulish font-semibold text-xl mt-2">
           {touristSpotName}
         </div>
