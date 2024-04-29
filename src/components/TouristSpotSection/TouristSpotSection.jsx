@@ -3,19 +3,20 @@ import { ScaleLoader } from "react-spinners";
 import useAsyncEffect from "use-async-effect";
 import useSession from "../../hooks/useSession";
 import useCustomTheme from "../../hooks/useTheme";
-import CountryCard from "../CountryCard/CountryCard";
+import SpotCard from "../SpotCard/SpotCard";
 
-const CountrySection = () => {
+const TouristSpotSection = () => {
   const { theme } = useCustomTheme();
   const { session } = useSession();
 
   const [dataLoading, setDataLoading] = useState(true);
-  const [countriesData, setCountriesData] = useState([]);
+  const [spotsData, setSpotsData] = useState([]);
   useAsyncEffect(async () => {
     setDataLoading(true);
-    const response = await session.get("/country-list");
+    const response = await session.get("/get-spot");
     setDataLoading(false);
-    setCountriesData(response.data.countries);
+    console.log(response.data.data);
+    setSpotsData(response.data.data);
   }, []);
 
   if (dataLoading)
@@ -32,20 +33,20 @@ const CountrySection = () => {
   return (
     <div
       className={`w-[95%] lg:max-w-screen-xl mx-auto ${
-        theme === "0" ? "bg-gray-100" : "bg-zinc-900"
+        theme === "0" ? "bg-gray-100" : "bg-gray-900"
       }  rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10 `}
     >
       <h1 className="font-lexend text-4xl text-center font-bold my-4">
-        Experience Diversity: Southeast Asia
+        Journey to Iconic Tourist Spots
       </h1>
       <div className="w-full grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 mt-8  gap-4">
-        {countriesData &&
-          countriesData.map((country, index) => (
-            <CountryCard key={index} country={country} />
+        {spotsData &&
+          spotsData.map((spot) => (
+            <SpotCard key={spot._id} spot={spot} />
           ))}
       </div>
     </div>
   );
 };
 
-export default CountrySection;
+export default TouristSpotSection;
