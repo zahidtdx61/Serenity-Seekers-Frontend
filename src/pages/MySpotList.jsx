@@ -37,7 +37,7 @@ const MySpotList = () => {
   return (
     <div>
       <div className="max-w-screen-xl mx-auto p-4">
-        <MyListTable tableData={tableData} />
+        <MyListTable tableData={tableData} setTableData={setTableData} />
       </div>
     </div>
   );

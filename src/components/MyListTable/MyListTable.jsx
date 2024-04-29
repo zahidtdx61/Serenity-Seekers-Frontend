@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
 import DataTable from "react-data-table-component";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
+import useSession from "../../hooks/useSession";
 import useCustomTheme from "../../hooks/useTheme";
 
 const ImageCell = ({ row }) => (
@@ -10,26 +13,69 @@ const ImageCell = ({ row }) => (
   />
 );
 
-const BtnCell = ({ message, bgColor }) => (
-  <button
-    style={{ backgroundColor: bgColor }}
-    className={` text-white px-4 py-1 rounded-md`}
-    onClick={() => console.log(message)}
-  >
-    {message}
-  </button>
-);
+const BtnCell = ({
+  message,
+  bgColor,
+  spotId,
+  type,
+  tableData,
+  setTableData,
+}) => {
+  // router.delete("/delete-spot/:spotId", SpotController.deleteSpot);
+  const { session } = useSession();
+  const { user } = useAuth();
+  const deleteFromDatabase = async (spotId) => {
+    try {
+      const response = await session.delete(`/delete-spot/${spotId}`, {
+        data: {
+          uuid: user.uid,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const updatedTableData = tableData.filter((item) => item._id !== spotId);
+      setTableData(updatedTableData);
+      console.log(response.data);
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
 
-const MyListTable = ({ tableData }) => {
+  const deleteSpot = (spotId) => {
+    deleteFromDatabase(spotId);
+  };
+
+  const updateSpot = (spotId) => {
+    console.log("Updating spot with id: ", spotId);
+  };
+  return (
+    <button
+      style={{ backgroundColor: bgColor }}
+      className={`text-white px-4 py-1 rounded-md`}
+      onClick={() => {
+        if (type === "delete") deleteSpot(spotId);
+        else updateSpot(spotId);
+      }}
+    >
+      {message}
+    </button>
+  );
+};
+
+const MyListTable = ({ tableData, setTableData }) => {
   const { theme } = useCustomTheme();
   const data = tableData.map((item) => {
-    const { image, touristSpotName, location, countryName, averageCost } = item;
+    const { image, touristSpotName, location, countryName, averageCost, _id } =
+      item;
     return {
       image,
       touristSpotName,
       location,
       countryName,
       averageCost,
+      _id,
       update: "Update it",
       delete: "Delete it",
     };
@@ -58,11 +104,29 @@ const MyListTable = ({ tableData }) => {
     },
     {
       name: "Update",
-      cell: (row) => <BtnCell message={row.update} bgColor="blue" />,
+      cell: (row) => (
+        <BtnCell
+          message={row.update}
+          bgColor="blue"
+          spotId={row._id}
+          type="update"
+          tableData={tableData}
+          setTableData={setTableData}
+        />
+      ),
     },
     {
       name: "Delete",
-      cell: (row) => <BtnCell message={row.delete} bgColor="red" />,
+      cell: (row) => (
+        <BtnCell
+          message={row.delete}
+          bgColor="red"
+          spotId={row._id}
+          type="delete"
+          tableData={tableData}
+          setTableData={setTableData}
+        />
+      ),
     },
   ];
   const tableStyle = {
@@ -80,14 +144,13 @@ const MyListTable = ({ tableData }) => {
     },
   };
 
-  return (
-    <DataTable columns={columns} data={data} customStyles={tableStyle} />
-  );
+  return <DataTable columns={columns} data={data} customStyles={tableStyle} />;
   // return <DataTable columns={columns} data={data} />;
 };
 
 MyListTable.propTypes = {
   tableData: PropTypes.array,
+  setTableData: PropTypes.func,
 };
 
 export default MyListTable;
