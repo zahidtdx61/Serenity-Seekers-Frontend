@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import useAsyncEffect from "use-async-effect";
 import TouristSpotCard from "../components/TouristSpotCard/TouristSpotCard";
@@ -9,6 +9,7 @@ const AllTouristSpot = () => {
 
   const [dataLoading, setDataLoading] = useState(true);
   const [spotsData, setSpotsData] = useState([]);
+  const [sortType, setSortType] = useState("");
 
   useAsyncEffect(async () => {
     setDataLoading(true);
@@ -17,6 +18,13 @@ const AllTouristSpot = () => {
     console.log(response.data.data);
     setSpotsData(response.data.data);
   }, []);
+
+  useEffect(() => {
+    if(sortType === "averageCost"){
+      const sortedData = [...spotsData].sort((a, b) => parseInt(a.averageCost) - parseInt(b.averageCost));
+      setSpotsData(sortedData);
+    }
+  }, [sortType])
 
   if (dataLoading)
     return (
@@ -38,6 +46,23 @@ const AllTouristSpot = () => {
         landmarks, and hidden gems that await your discovery. Let us inspire
         your next adventure!
       </p>
+
+      <div className="w-full flex justify-center mt-16 mb-8 ">
+        <select
+          defaultValue={"sort"}
+          onChange={(e) => setSortType(() => e.target.value)}
+          name="cars"
+          id="cars"
+          className="bg-blue-600 px-5 py-2 rounded-md text-xl text-white"
+        >
+          <option disabled value="sort">
+            Sort By
+          </option>
+          <option value="averageCost" className="bg-transparent">
+            Average Cost
+          </option>
+        </select>
+      </div>
       <div className="max-w-screen-lg grid grid-cols-1 gap-3 mx-auto my-8">
         {spotsData &&
           spotsData.map((spot) => (
