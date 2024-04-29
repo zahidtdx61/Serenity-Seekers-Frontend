@@ -36,7 +36,6 @@ const BtnCell = ({
       });
       const updatedTableData = tableData.filter((item) => item._id !== spotId);
       setTableData(updatedTableData);
-      console.log(response.data);
       toast.success(response.data.message);
     } catch (error) {
       console.log("Error: ", error);

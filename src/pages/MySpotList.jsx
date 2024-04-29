@@ -18,6 +18,7 @@ const MySpotList = () => {
       const response = await session.get(`/get-spot/user/${uid}`);
       setDataLoading(false);
       setTableData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.log("Error: ", error);
     } finally {
@@ -33,6 +34,14 @@ const MySpotList = () => {
         <ScaleLoader size={40} color="#0E46A3" />
       </div>
     );
+
+  if (tableData.length === 0) {
+    return (
+      <div className="w-[95%] min-h-[calc(100vh-116px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center ">
+        <p className="text-4xl font-bold text-center">You have not added any tourist till now. </p>
+      </div>
+    );
+  }
 
   return (
     <div>
