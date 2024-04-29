@@ -22,7 +22,7 @@ const TouristSpotSection = () => {
     return (
       <div
         className={`w-[95%] min-h-[calc(100vh-116px)] lg:max-w-screen-xl mx-auto ${
-          theme === "0" ? "bg-gray-100" : "bg-zinc-900"
+          theme === "0" ? "bg-gray-100" : "bg-[#282a36]"
         }  rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
       >
         <ScaleLoader size={40} color="#0E46A3" />
@@ -32,7 +32,7 @@ const TouristSpotSection = () => {
   return (
     <div
       className={`w-[95%] lg:max-w-screen-xl mx-auto ${
-        theme === "0" ? "bg-gray-100" : "bg-gray-900"
+        theme === "0" ? "bg-gray-100" : "#bg-[#282a36]"
       }  rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10 `}
     >
       <h1 className="font-lexend text-4xl text-center font-bold my-4">
