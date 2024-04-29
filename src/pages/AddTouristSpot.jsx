@@ -1,11 +1,59 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
+import useSession from "../hooks/useSession";
+import { useState } from "react";
+import { ScaleLoader } from "react-spinners";
 
 const AddTouristSpot = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const { session } = useSession();
+  const { user } = useAuth();
+  const [reqLoading, setReqLoading] = useState(false);
+
+  const sendTouristSpotData = async (data) => {
+    setReqLoading(true);
+    const { uid, email, displayName } = user;
+    try {
+      const response = await session.post(
+        `/add-spot/${uid}`,
+        {
+          ...data,
+          email,
+          username: displayName,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      setReqLoading(false);
+      toast.success("Tourist spot added successfully");
+      reset();
+    } catch (error) {
+      console.log("Error: ", error);
+      setReqLoading(false);
+      toast.error("Failed to add tourist spot");
+    } finally{
+      setReqLoading(false);
+    }
+  };
+
+  if (reqLoading)
+  return (
+    <div
+      className={`w-[95%] min-h-[calc(100vh-400px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
+    >
+      <ScaleLoader size={40} color="#0E46A3" />
+    </div>
+  );
+
   return (
     <div className="min-h-[calc(100vh-80px)] max-w-screen-lg p-4 mx-auto">
       <form
-        onSubmit={handleSubmit((data) => console.log("form submitted", data))}
+        onSubmit={handleSubmit((data) => sendTouristSpotData(data))}
         className="space-y-5"
       >
         <div>
@@ -29,13 +77,23 @@ const AddTouristSpot = () => {
         </div>
 
         <div>
+          <label className="font-medium">Tourist Spot Location</label>
+          <input
+            {...register("location")}
+            required
+            placeholder="Enter your tourist location"
+            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 shadow-sm rounded-lg"
+          />
+        </div>
+
+        <div>
           <label className="font-medium">Country</label>
           <select
             {...register("countryName")}
             required
             className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 shadow-sm rounded-lg"
           >
-            <option disabled value="">
+            <option disabled value="country">
               Select a country
             </option>
             <option value="Bangladesh">Bangladesh</option>

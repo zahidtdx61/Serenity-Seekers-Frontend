@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useSession from "../hooks/useSession";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -22,6 +23,30 @@ const Login = () => {
     user,
   } = useAuth();
 
+  const { session } = useSession();
+  // uuid, email, username
+  const addUserToDatabase = async (user) => {
+    const { uid, email, displayName } = user;
+    try {
+      const response = await session.post(
+        "/add-user",
+        {
+          uuid: uid,
+          email,
+          username: displayName,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
   if (user) {
     toast.error("You are already signed in");
     return <Navigate to="/" />;
@@ -32,6 +57,7 @@ const Login = () => {
     try {
       await signInEmail(email, password);
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);
@@ -48,6 +74,7 @@ const Login = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);
@@ -62,6 +89,7 @@ const Login = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);

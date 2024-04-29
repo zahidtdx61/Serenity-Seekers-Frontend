@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useSession from "../hooks/useSession";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -39,6 +40,30 @@ const Register = () => {
   };
   const containsNumber = (str) => {
     return /\d/.test(str);
+  };
+
+  const { session } = useSession();
+  // uuid, email, username
+  const addUserToDatabase = async (user) => {
+    const { uid, email, displayName } = user;
+    try {
+      const response = await session.post(
+        "/add-user",
+        {
+          uuid: uid,
+          email,
+          username: displayName,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   };
 
   const handleSignUp = async (data) => {
@@ -100,6 +125,7 @@ const Register = () => {
       console.log("after update", user);
 
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       // console.error('get error: ', error.code, error.message);
@@ -116,6 +142,7 @@ const Register = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);
@@ -130,6 +157,7 @@ const Register = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
+      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
     } catch (error) {
       setIsLoading(false);
