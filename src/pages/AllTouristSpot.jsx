@@ -15,16 +15,18 @@ const AllTouristSpot = () => {
     setDataLoading(true);
     const response = await session.get("/get-spot");
     setDataLoading(false);
-    console.log(response.data.data);
+    // console.log(response.data.data);
     setSpotsData(response.data.data);
   }, []);
 
   useEffect(() => {
-    if(sortType === "averageCost"){
-      const sortedData = [...spotsData].sort((a, b) => parseInt(a.averageCost) - parseInt(b.averageCost));
+    if (sortType === "averageCost") {
+      const sortedData = [...spotsData].sort(
+        (a, b) => parseInt(a.averageCost) - parseInt(b.averageCost)
+      );
       setSpotsData(sortedData);
     }
-  }, [sortType])
+  }, [sortType]);
 
   if (dataLoading)
     return (

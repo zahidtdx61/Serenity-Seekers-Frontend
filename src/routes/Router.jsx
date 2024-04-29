@@ -5,6 +5,7 @@ import AllTouristSpot from "../pages/AllTouristSpot";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import MySpotList from "../pages/MySpotList";
 import Register from "../pages/Register";
 import PrivateRoutes from "./PrivateRoutes";
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path: "/my-list",
         element: (
           <PrivateRoutes>
-            <div>My List</div>
+            <MySpotList />
           </PrivateRoutes>
         ),
       },
