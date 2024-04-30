@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import CountrySection from "../components/CountrySection/CountrySection";
 import TouristSpotSection from "../components/TouristSpotSection/TouristSpotSection";
+import Banner from "../components/Banner/Banner";
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
         <title>Serenity Seekers | Home</title>
       </Helmet>
       <div className="min-h-[calc(100vh-116px)]">
-        {/* <Banner/> */}
+        <Banner/>
         <TouristSpotSection />
         <CountrySection />
       </div>
