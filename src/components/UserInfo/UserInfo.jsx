@@ -1,5 +1,6 @@
-import { Avatar, Tooltip } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import useAuth from "../../hooks/useAuth";
 
 const UserInfo = () => {
@@ -18,11 +19,13 @@ const UserInfo = () => {
   return (
     <>
       <div className="flex items-center justify-end gap-3">
-        <button>
-          <Tooltip title={displayName || "Not available"}>
-            <Avatar src={photoURL} />
-          </Tooltip>
+        <button
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={displayName || "Not available"}
+        >
+          <Avatar src={photoURL} />
         </button>
+        <Tooltip id="my-tooltip" />
         <button
           onClick={handleSignOut}
           className="px-5 py-2 bg-primary-maroon text-slate-50 rounded hover:bg-opacity-70 hover:scale-105 hidden lg:block"
