@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import AddTouristSpot from "../pages/AddTouristSpot";
 import AllTouristSpot from "../pages/AllTouristSpot";
+import CountrySpot from "../pages/CountrySpot";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -67,8 +68,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/country-spot/:countryName",
-        element: <div>Country Spot</div>,
-      }
+        element: <CountrySpot />,
+      },
     ],
   },
 ]);
