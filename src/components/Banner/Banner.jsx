@@ -20,7 +20,7 @@ const bannerImages = [
 
 const Banner = () => {
   return (
-    <div className="w-[98%] lg:max-w-screen-xl mx-auto mt-6 mb-10 h-[350px] md:h-[550px] lg:h-[600px] rounded-lg overflow-hidden">
+    <div className="w-[94%]  lg:max-w-screen-xl mx-auto mt-6 mb-10 h-[350px] md:h-[550px] lg:h-[600px] rounded-lg overflow-hidden">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

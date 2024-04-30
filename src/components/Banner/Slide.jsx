@@ -14,7 +14,7 @@ const Slide = ({ image }) => {
         Serenity <span className="text-blue-600">Seekers</span>
       </h1>
       <p className="text-zinc-200 font-medium tracking-tight leading-tight w-[90%] md:w-[70%] lg:w-[55%]">
-        Explore Southeast Asia's beauty and culture with us. From pristine
+        Explore Southeast Asia&apos;s beauty and culture with us. From pristine
         beaches to historic landmarks, embark on unforgettable adventures and
         discover hidden gems. Start exploring today!
       </p>
