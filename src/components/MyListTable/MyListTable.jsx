@@ -42,7 +42,8 @@ const BtnCell = ({
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: theme === "0" ? "background.paper" : "#282a36",
-    border: "2px solid #000",
+    // border: "2px solid #000",
+    borderRadius: 2,
     boxShadow: 24,
     p: 4,
   };
@@ -107,7 +108,7 @@ const BtnCell = ({
             Are you sure you want to delete this spot?
           </Typography>
           <button
-            className="px-4 py-1 rounded bg-red-700 mt-2"
+            className="px-4 py-1 rounded text-white bg-red-700 mt-2"
             onClick={closeModal}
           >
             Yes Delete
