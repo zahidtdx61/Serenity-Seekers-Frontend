@@ -65,6 +65,10 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      {
+        path: "/country-spot/:countryName",
+        element: <div>Country Spot</div>,
+      }
     ],
   },
 ]);
