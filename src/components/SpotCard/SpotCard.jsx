@@ -4,7 +4,16 @@ import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const SpotCard = ({ spot }) => {
-  const { image, location, touristSpotName, shortDescription, _id } = spot;
+  const {
+    image,
+    location,
+    touristSpotName,
+    shortDescription,
+    _id,
+    averageCost,
+    countryName,
+    seasonality,
+  } = spot;
   return (
     <div className="w-full p-4 rounded-md border border-b-2 flex flex-col relative">
       <div className="w-full rounded-md h-[250px] overflow-hidden relative">
@@ -17,15 +26,19 @@ const SpotCard = ({ spot }) => {
         </div>
       </div>
 
-      <div className="font-mulish font-semibold text-xl mt-2">
-        {touristSpotName}
+      <div className="font-mulish font-semibold text-xl mt-2 flex justify-between items-center">
+        <h1>{touristSpotName}</h1>
+        <h3>{averageCost}$</h3>
       </div>
+
       <div className="font-mulish font-medium text-sm my-4 flex-1">
-        {shortDescription}
+        <p>Country: {countryName}</p>
+        <p className="mb-4">Seasonality: {seasonality}</p>
+        <p>{shortDescription}</p>
       </div>
 
       <Divider />
-      
+
       <Link to={`/view-details/${_id}`}>
         <button className="bg-blue-700 hover:bg-blue-500 text-zinc-50 font-bold py-2 px-4 rounded mt-4">
           View Property
