@@ -1,3 +1,5 @@
+import { Tooltip } from "react-tooltip";
+
 const CustomerReview = () => {
   const testimonials = [
     {
@@ -44,12 +46,17 @@ const CustomerReview = () => {
               <li key={idx} className="p-4 rounded-xl shadow-md border">
                 <figure>
                   <div className="flex items-center gap-x-4">
-                    <div className="w-16 h-16">
+                    <div
+                      className="w-16 h-16"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content={item.name || "Not available"}
+                    >
                       <img
                         src={item.avatar}
                         className="h-full w-full object-cover object-center rounded-full"
                       />
                     </div>
+                    <Tooltip id="my-tooltip" />
                     <div>
                       <span className="block  font-semibold">{item.name}</span>
                       <span className="block  text-sm mt-0.5">
