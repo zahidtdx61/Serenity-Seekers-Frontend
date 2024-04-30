@@ -1,4 +1,6 @@
+import { Box, Modal, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import DataTable from "react-data-table-component";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -21,14 +23,33 @@ const BtnCell = ({
   type,
   tableData,
   setTableData,
+  setDataLoading,
 }) => {
   // router.delete("/delete-spot/:spotId", SpotController.deleteSpot);
   const { session } = useSession();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { theme } = useCustomTheme();
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: theme === "0" ? "background.paper" : "#282a36",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
   const deleteFromDatabase = async (spotId) => {
     try {
+      setDataLoading(true);
       const response = await session.delete(`/delete-spot/${spotId}`, {
         data: {
           uuid: user.uid,
@@ -38,10 +59,14 @@ const BtnCell = ({
         },
       });
       const updatedTableData = tableData.filter((item) => item._id !== spotId);
+      setDataLoading(false);
       setTableData(updatedTableData);
       toast.success(response.data.message);
     } catch (error) {
+      setDataLoading;
       console.log("Error: ", error);
+    } finally {
+      setDataLoading(false);
     }
   };
 
@@ -52,21 +77,48 @@ const BtnCell = ({
   const updateSpot = (spotId) => {
     navigate(`/update-spot/${spotId}`);
   };
+
+  const closeModal = () => {
+    handleClose();
+    console.log(spotId);
+    deleteSpot(spotId);
+  };
+
   return (
-    <button
-      style={{ backgroundColor: bgColor }}
-      className={`text-white px-4 py-1 rounded-md`}
-      onClick={() => {
-        if (type === "delete") deleteSpot(spotId);
-        else updateSpot(spotId);
-      }}
-    >
-      {message}
-    </button>
+    <>
+      <button
+        style={{ backgroundColor: bgColor }}
+        className={`text-white px-4 py-1 rounded-md`}
+        onClick={() => {
+          if (type === "delete") handleOpen();
+          else updateSpot(spotId);
+        }}
+      >
+        {message}
+      </button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Are you sure you want to delete this spot?
+          </Typography>
+          <button
+            className="px-4 py-1 rounded bg-red-700 mt-2"
+            onClick={closeModal}
+          >
+            Yes Delete
+          </button>
+        </Box>
+      </Modal>
+    </>
   );
 };
 
-const MyListTable = ({ tableData, setTableData }) => {
+const MyListTable = ({ tableData, setTableData, setDataLoading }) => {
   const { theme } = useCustomTheme();
   const data = tableData.map((item) => {
     const { image, touristSpotName, location, countryName, averageCost, _id } =
@@ -127,6 +179,7 @@ const MyListTable = ({ tableData, setTableData }) => {
           type="delete"
           tableData={tableData}
           setTableData={setTableData}
+          setDataLoading={setDataLoading}
         />
       ),
     },
@@ -153,6 +206,7 @@ const MyListTable = ({ tableData, setTableData }) => {
 MyListTable.propTypes = {
   tableData: PropTypes.array,
   setTableData: PropTypes.func,
+  setDataLoading: PropTypes.func,
 };
 
 export default MyListTable;

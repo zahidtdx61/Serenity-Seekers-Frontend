@@ -58,7 +58,7 @@ const MySpotList = () => {
         <title>Serenity Seekers | My Tourist Spots List</title>
       </Helmet>
       <div className="max-w-screen-xl mx-auto p-4">
-        <MyListTable tableData={tableData} setTableData={setTableData} />
+        <MyListTable tableData={tableData} setTableData={setTableData} setDataLoading={setDataLoading} />
       </div>
     </div>
   );
