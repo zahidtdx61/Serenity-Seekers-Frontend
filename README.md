@@ -5,8 +5,11 @@ Welcome to Serenity, a comprehensive platform dedicated to showcasing the beauty
 ## Live Preview
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fserenity-seekers.web.app%2F)](https://serenity-seekers.web.app/)
-
 You can visit our live site at [Serenity Seekers](https://serenity-seekers.web.app/).
+
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fserenity-seekers.vercel.app%2F)](https://serenity-seekers.vercel.app/)
+You can also check out our live site (mirror) at [Serenity Seekers Vercel](https://serenity-seekers.vercel.app/).
+
 
 ## Backend API
 
