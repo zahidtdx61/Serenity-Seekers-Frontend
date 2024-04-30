@@ -4,6 +4,7 @@ import useAsyncEffect from "use-async-effect";
 import useSession from "../../hooks/useSession";
 import useCustomTheme from "../../hooks/useTheme";
 import CountryCard from "../CountryCard/CountryCard";
+import Walking from "../Walking/Walking";
 
 const CountrySection = () => {
   const { theme } = useCustomTheme();
@@ -35,8 +36,8 @@ const CountrySection = () => {
         theme === "0" ? "bg-gray-100" : "bg-[#282a36]"
       }  rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10 `}
     >
-      <h1 className="font-lexend text-4xl text-center font-bold my-4">
-        Experience Diversity: Southeast Asia
+      <h1 className="font-lexend text-4xl text-center font-bold my-4 flex items-center justify-center flex-col md:flex-row">
+        Experience Diversity: Southeast Asia <Walking />
       </h1>
       <div className="w-full grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 mt-8  gap-4">
         {countriesData &&
