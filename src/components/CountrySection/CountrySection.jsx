@@ -43,10 +43,12 @@ const CountrySection = () => {
       }  rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10 `}
     >
       <h1 className="font-lexend text-3xl md:text-5xl lg:text-6xl text-center font-bold my-4 flex items-center justify-between flex-col md:flex-row">
-        <div className="flex-1">
-          <HeadingTypeWriter sentences={titleMsg} />
+        <div className="flex-1 flex items-center">
+          <div className="h-[100px] lg:h-[200px]">
+            <HeadingTypeWriter sentences={titleMsg} />
+          </div>
         </div>
-        <div className="lg:w-[30%]">
+        <div className="lg:w-[30%] h-[300px]">
           <Walking />
         </div>
       </h1>
