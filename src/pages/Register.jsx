@@ -125,8 +125,8 @@ const Register = () => {
       console.log("after update", user);
 
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       // console.error('get error: ', error.code, error.message);
       if (error.code === "auth/email-already-in-use")
@@ -142,8 +142,8 @@ const Register = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       setUser(null);
@@ -157,8 +157,8 @@ const Register = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       setUser(null);

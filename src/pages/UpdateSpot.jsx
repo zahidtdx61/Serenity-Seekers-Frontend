@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
@@ -85,12 +86,18 @@ const UpdateSpot = () => {
       <div
         className={`w-[95%] min-h-[calc(100vh-116px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
       >
+        <Helmet>
+          <title>Serenity Seekers | Update Tourist Spot</title>
+        </Helmet>
         <ScaleLoader size={40} color="#0E46A3" />
       </div>
     );
 
   return (
     <div className="min-h-[calc(100vh-80px)] max-w-screen-lg p-4 mx-auto">
+      <Helmet>
+        <title>Serenity Seekers | Update Tourist Spot</title>
+      </Helmet>
       <h1 className="text-4xl text-center font-bold my-4">
         Update Tourist Spot
       </h1>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 import useAsyncEffect from "use-async-effect";
@@ -31,6 +32,9 @@ const CountrySpot = () => {
       <div
         className={`w-[95%] min-h-[calc(100vh-116px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
       >
+        <Helmet>
+          <title>Serenity Seekers | Country Tourist Spots</title>
+        </Helmet>
         <ScaleLoader size={40} color="#0E46A3" />
       </div>
     );
@@ -38,6 +42,9 @@ const CountrySpot = () => {
   if (spotsData.length === 0) {
     return (
       <div className="min-h-[calc(100vh-116px)] font-mulish p-4 flex items-center justify-center">
+        <Helmet>
+          <title>Serenity Seekers | Country Tourist Spots</title>
+        </Helmet>
         <h1 className="text-4xl text-center font-bold my-4">
           No Tourist spot has been added in {countryName}
         </h1>
@@ -47,6 +54,10 @@ const CountrySpot = () => {
 
   return (
     <div className="min-h-[calc(100vh-116px)] w-[95%] lg:max-w-screen-xl mx-auto">
+      <Helmet>
+        <title>Serenity Seekers | Country Tourist Spots</title>
+      </Helmet>
+
       <h1 className="text-4xl text-center font-bold mt-8 mb-10">
         Explore Spectacular Tourist Spots in {countryName}
       </h1>

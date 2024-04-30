@@ -57,8 +57,8 @@ const Login = () => {
     try {
       await signInEmail(email, password);
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       setUser(null);
@@ -74,8 +74,8 @@ const Login = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       setUser(null);
@@ -89,8 +89,8 @@ const Login = () => {
       const user = result.user;
       setUser(user);
       navigate(prevPage);
-      addUserToDatabase(user);
       toast.success("Welcome to Serenity Seekers !!!");
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       setUser(null);

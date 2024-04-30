@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { IoLocationOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
@@ -37,12 +38,18 @@ const ViewDetails = () => {
       <div
         className={`w-[95%] min-h-[calc(100vh-116px)] lg:max-w-screen-xl mx-auto   rounded-lg  mt-12 mb-8 p-2 md:p-4 lg:p-10  flex flex-col  justify-center  items-center `}
       >
+        <Helmet>
+          <title>Serenity Seekers | View Details</title>
+        </Helmet>
         <ScaleLoader size={40} color="#0E46A3" />
       </div>
     );
 
   return (
     <div className="w-[95%] mt-8 lg:max-w-screen-xl mx-auto p-4 rounded-md border border-b-2 flex flex-col md:flex-row relative gap-4">
+      <Helmet>
+        <title>Serenity Seekers | View Details</title>
+      </Helmet>
       <div className="w-full md:w-[60%] rounded-md overflow-hidden">
         <img src={image} className="w-full h-full object-cover object-center" />
       </div>

@@ -1,23 +1,21 @@
-import React from "react";
-
 const CustomerReview = () => {
   const testimonials = [
     {
-      avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
+      avatar: "https://i.postimg.cc/4ythxcds/default.webp",
       name: "Martin Escobar",
       title: "Travel Blogger",
       quote:
         "Exploring Southeast Asia was a game-changer! Thanks to Serenity Seekers, I discovered hidden waterfalls, tasted exotic street food, and met incredible locals. 10/10 recommend!",
     },
     {
-      avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-      name: "Angela Stian",
+      avatar: "https://i.postimg.cc/fL19sCM8/user-3.png",
+      name: "Alex Robert",
       title: "Adventure Enthusiast",
       quote:
         "Southeast Asia exceeded all my expectations! From biking through ancient ruins to diving in crystal-clear waters, every day was a thrill. Serenity Seekers made it effortless.",
     },
     {
-      avatar: "https://randomuser.me/api/portraits/men/86.jpg",
+      avatar: "https://i.postimg.cc/BZ1FgrCk/user-2.png",
       name: "Karim Ahmed",
       title: "Photographer",
       quote:
@@ -46,11 +44,14 @@ const CustomerReview = () => {
               <li key={idx} className="p-4 rounded-xl shadow-md border">
                 <figure>
                   <div className="flex items-center gap-x-4">
-                    <img src={item.avatar} className="w-16 h-16 rounded-full" />
+                    <div className="w-16 h-16">
+                      <img
+                        src={item.avatar}
+                        className="h-full w-full object-cover object-center rounded-full"
+                      />
+                    </div>
                     <div>
-                      <span className="block  font-semibold">
-                        {item.name}
-                      </span>
+                      <span className="block  font-semibold">{item.name}</span>
                       <span className="block  text-sm mt-0.5">
                         {item.title}
                       </span>
