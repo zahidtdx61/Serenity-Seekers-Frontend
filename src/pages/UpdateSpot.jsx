@@ -70,6 +70,9 @@ const UpdateSpot = () => {
         );
         console.log(response.data);
         setDataLoading(false);
+        const newData = { ...data };
+        const updatedData = { ...spotData, ...newData };
+        setSpotData({ ...updatedData });
         toast.success("Tourist spot updated successfully");
       } catch (error) {
         setDataLoading(false);
