@@ -1,6 +1,6 @@
-# Serenity - A South Asian Tourist Spot Site
+# Serenity Seekers - A South Asian Tourist Spot Site
 
-Welcome to Serenity, a comprehensive platform dedicated to showcasing the beauty of South Asian tourist spots.
+Welcome to Serenity Seekers, a comprehensive platform dedicated to showcasing the beauty of South Asian tourist spots.
 
 ## Live Preview
 
