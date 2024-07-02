@@ -17,6 +17,40 @@ You can also check out our live site (mirror) at [Serenity Seekers Vercel](https
 
 Our backend API is hosted at [Serenity Seekers Backend](https://serenity-seekers-backend.vercel.app).
 
+Our Backend repository [Serenity Seekers Backend](https://github.com/zahidtdx61/Serenity-Seekers-Backend).
+
+## Installation
+
+To run the website locally, follow these steps:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/zahidtdx61/Serenity-Seekers-Frontend.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd Serenity-Seekers-Frontend
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Make an .env file and add these credentials:
+
+   ```env
+   VITE_apiKey=<get_this_from_firebase>
+   VITE_authDomain=<get_this_from_firebase>
+   VITE_projectId=<get_this_from_firebase>
+   VITE_storageBucket=<get_this_from_firebase>
+   VITE_messagingSenderId=<get_this_from_firebase>
+   VITE_appId=<get_this_from_firebase>
+   ```
+
+5. Start the development server:
+   ```sh
+   npm run dev
+   ```
+
 ## Features
 
 #### 1. User Authentication
